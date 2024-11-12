@@ -1,6 +1,7 @@
 CC = gcc
-TARGET=runo
-HEADERS=./headers/logger.h
+TARGET = runo
+HEADERS = ./headers/logger.h
+OBJECTS = main.o console_logger.o
 
 all: $(TARGET)
 
@@ -11,7 +12,7 @@ main.o:	main.c $(HEADERS)
 	$(CC) -O0 -g3 -Wall -c main.c
 
 $(TARGET): logger.o main.o 
-	$(CC) -o ../build/runo main.o console_logger.o
+	$(CC) -o ../build/runo $(OBJECTS)
 
 clean:
 	rm -f *.o
