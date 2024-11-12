@@ -14,15 +14,15 @@ static char* level_str(int level) {
 }
 
 void log_format(const int level, const char* message) {
-    time_t nowtime = time(NULL);
-    struct tm *now = localtime(&nowtime);
-
-    char datestr[20];
-    strftime(datestr, sizeof(datestr), "%Y-%m-%d %T", now);
-
     extern Logger logger;
 
     if (level >= logger.level) {
+        time_t nowtime = time(NULL);
+        struct tm *now = localtime(&nowtime);
+
+        char datestr[20];
+        strftime(datestr, sizeof(datestr), "%Y-%m-%d %T", now);
+
         printf("%s [%7s]: %s\n", datestr, level_str(level), message);
     }
 }
