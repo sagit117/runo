@@ -1,12 +1,13 @@
 CC = gcc
 TARGET=runo
+HEADERS=./headers/logger.h
 
 all: $(TARGET)
 
-logger.o: ./headers/logger.h
+logger.o: ./logger/console_logger.c $(HEADERS)
 	$(CC) -O0 -g3 -Wall -c ./logger/console_logger.c
 
-main.o:	main.c ./headers/logger.h
+main.o:	main.c $(HEADERS)
 	$(CC) -O0 -g3 -Wall -c main.c
 
 $(TARGET): logger.o main.o 
