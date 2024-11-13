@@ -9,7 +9,7 @@ enum LogLevel {
     ERROR = 40
 };
 
-typedef struct logger {
+typedef struct {
     int level;
 } Logger;
 
