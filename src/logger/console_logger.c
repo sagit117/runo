@@ -2,7 +2,7 @@
 #include <time.h>
 #include "../headers/logger.h"
 
-static char* level_str(int level) {
+static char *level_str(int level) {
     switch (level) {
         case DEBUG:     return "DEBUG";
         case INFO:      return "INFO";
@@ -13,7 +13,7 @@ static char* level_str(int level) {
     };
 }
 
-void log_format(const int level, const char* message) {
+void log_format(const int level, const char *message) {
     extern Logger logger;
 
     if (level >= logger.level) {
@@ -27,18 +27,18 @@ void log_format(const int level, const char* message) {
     }
 }
 
-void log_error(const char* message) {
+void log_error(const char *message) {
     log_format(ERROR, message);
 }
 
-void log_warning(const char* message) {
+void log_warning(const char *message) {
     log_format(WARNING, message);
 }
 
-void log_info(const char* message) {
+void log_info(const char *message) {
     log_format(INFO, message);
 }
 
-void log_debug(const char* message) {
+void log_debug(const char *message) {
     log_format(DEBUG, message);
 }
