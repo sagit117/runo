@@ -9,6 +9,6 @@ typedef struct {
     Server server;
 } Config;
 
-void load_config_from_file(const char *filePath, Config *config);
+int load_config_from_file(const char *filePath, Config *config);
 
 #endif
