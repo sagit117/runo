@@ -3,23 +3,23 @@
 
 #include <string.h> // strcmp
 
-bool check_params_cmd(int argc, char *argv[]) {
+BOOL check_params_cmd(int argc, char *argv[]) {
     if (argc == 1) {
         log_error("Укажите параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg");
-        return false;
+        return FALSE;
     } 
 
     if (strcmp("-c", argv[1]) != 0 && strcmp("-h", argv[1]) != 0) {
         log_error("Не известный параметр");
-        return false;
+        return FALSE;
     }
 
     if (strcmp("-h", argv[1]) == 0) {
         log_info("\nПараметры приложения: \n   -c: параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg");
-        return false;
+        return FALSE;
     }
 
-    return true;
+    return TRUE;
 }
 
 /** 

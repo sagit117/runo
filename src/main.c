@@ -15,10 +15,10 @@ Logger logger = {.level = ALL};
 Config config;
 
 int main(int argc, char *argv[]) {
-    if (check_params_cmd(argc, argv) == false) exit(EXIT_ERROR);
+    if (check_params_cmd(argc, argv) == FALSE) exit(EXIT_ERROR);
 
     char *filePath = get_params_cmd_by_name("-c", argc, argv);
-    if (load_config_from_file(filePath, &config) == false) exit(EXIT_ERROR);
+    if (load_config_from_file(filePath, &config) == FALSE) exit(EXIT_ERROR);
 
     return 0;
 }
