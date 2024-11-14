@@ -1,26 +1,31 @@
 #include "../headers/logger.h"
-#include <string.h>
+#include "../headers/common.h"
 
-int check_params_cmd(int argc, char *argv[]) {
+#include <string.h> // strcmp
+
+bool check_params_cmd(int argc, char *argv[]) {
     if (argc == 1) {
         log_error("Укажите параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg");
-        return 0;
+        return false;
     } 
 
     if (strcmp("-c", argv[1]) != 0 && strcmp("-h", argv[1]) != 0) {
         log_error("Не известный параметр");
-        return 0;
+        return false;
     }
 
     if (strcmp("-h", argv[1]) == 0) {
         log_info("\nПараметры приложения: \n   -c: параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg");
-        return 0;
+        return false;
     }
 
-    return 1;
+    return true;
 }
 
-/** Получает значение параметра по его имени */
+/** 
+ * Получает значение параметра по его имени.
+ * @return занчение, либо NULL если такого параметра нет.
+ */
 char* get_params_cmd_by_name(const char *name, int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], name) == 0) {

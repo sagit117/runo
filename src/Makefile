@@ -5,13 +5,13 @@ OBJECTS = ../build/*.o
 
 all: $(TARGET)
 
-logger.o: ./logger/console_logger.c ./headers/logger.h
+logger.o: ./logger/console_logger.c ./headers/logger.h ./headers/common.h
 	$(CC) -O0 -g3 -Wall -c ./logger/console_logger.c -o ../build/logger.o
 
 params.o: ./params/params_cmd.c ./headers/params.h ./headers/logger.h
 	$(CC) -O0 -g3 -Wall -c ./params/params_cmd.c -o ../build/params.o
 
-config.o: ./config/config_app.c ./headers/config.h
+config.o: ./config/config_app.c ./headers/config.h ./headers/common.h
 	$(CC) -O0 -g3 -Wall -c ./config/config_app.c -o ../build/config.o
 
 main.o:	main.c $(HEADERS) logger.o params.o config.o
