@@ -9,12 +9,12 @@ BOOL check_params_cmd(int argc, char *argv[]) {
         return FALSE;
     } 
 
-    if (strcmp("-c", argv[1]) != 0 && strcmp("-h", argv[1]) != 0) {
+    if (strcmp(PARAM_CMD_CONFIG, argv[1]) != 0 && strcmp(PARAM_CMD_HELP, argv[1]) != 0) {
         log_error("Не известный параметр");
         return FALSE;
     }
 
-    if (strcmp("-h", argv[1]) == 0) {
+    if (strcmp(PARAM_CMD_HELP, argv[1]) == 0) {
         log_info("\nПараметры приложения: \n\t-c: параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg");
         return FALSE;
     }
@@ -23,10 +23,10 @@ BOOL check_params_cmd(int argc, char *argv[]) {
 }
 
 /** 
- * Получает значение параметра по его имени.
- * @return занчение, либо NULL если такого параметра нет.
+ * Получает значение параметра приложения по его имени.
+ * @return занчение параметра, либо NULL если такого параметра нет.
  */
-char* get_params_cmd_by_name(const char *name, int argc, char *argv[]) {
+char *get_params_cmd_by_name(const char *name, int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], name) == 0) {
             return argv[i + 1];

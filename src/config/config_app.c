@@ -9,16 +9,14 @@
 
 void set_struct_data(char *data) {
     extern Config config;
-
     const char *SERVER_PORT_PATH = "server.port";
-    
-    char *delim = "=";
+    const char *delim = "=";
     char *token;
 
     token = strtok(data, delim);
    
     while(token != NULL) {
-        char *trimToken = trimwhitespace(token);
+        const char *trimToken = trimwhitespace(token);
 
         // Server port
         if (strcmp(SERVER_PORT_PATH, trimToken) == 0) {
@@ -31,8 +29,6 @@ void set_struct_data(char *data) {
     
         token = strtok(NULL, delim);
     }
-
-    printf("%d", config.server.port);
 }
 
 /** 

@@ -18,7 +18,7 @@ Config config = { .server.port = 8080 };
 int main(int argc, char *argv[]) {
     if (check_params_cmd(argc, argv) == FALSE) exit(EXIT_ERROR);
 
-    char *filePath = get_params_cmd_by_name("-c", argc, argv);
+    char *filePath = get_params_cmd_by_name(PARAM_CMD_CONFIG, argc, argv);
     if (load_config_from_file(filePath, &config) == FALSE) exit(EXIT_ERROR);
 
     return 0;
