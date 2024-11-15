@@ -11,10 +11,13 @@ logger.o: ./logger/console_logger.c ./headers/logger.h ./headers/common.h
 params.o: ./params/params_cmd.c ./headers/params.h ./headers/logger.h
 	$(CC) -O0 -g3 -Wall -c ./params/params_cmd.c -o ../build/params.o
 
-config.o: ./config/config_app.c ./headers/config.h ./headers/common.h
+config.o: ./config/config_app.c ./headers/config.h ./headers/common.h ./headers/utils.h ./headers/logger.h
 	$(CC) -O0 -g3 -Wall -c ./config/config_app.c -o ../build/config.o
 
-main.o:	main.c $(HEADERS) logger.o params.o config.o
+utils.o: ./utils/utils_string.c ./headers/utils.h
+	$(CC) -O0 -g3 -Wall -c ./utils/utils_string.c -o ../build/utils.o
+
+main.o:	main.c $(HEADERS) logger.o params.o config.o utils.o
 	$(CC) -O0 -g3 -Wall -c main.c -o ../build/main.o
 
 $(TARGET): main.o 

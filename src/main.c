@@ -11,8 +11,8 @@
  * Имена переменных - camelCase.
  */
 
-Logger logger = {.level = ALL};
-Config config;
+Logger logger = { .level = ALL };
+Config config = { .server.port = 8080 };
 
 int main(int argc, char *argv[]) {
     if (check_params_cmd(argc, argv) == FALSE) exit(EXIT_ERROR);

@@ -1,14 +1,37 @@
 #include "../headers/config.h"
 #include "../headers/logger.h"
 #include "../headers/common.h"
+#include "../headers/utils.h"
 
 #include <stdio.h>  // FILE
-#include <string.h> // strlen
+#include <string.h> // strlen strcmp strtok
+#include <stdlib.h> // atoi
 
-void set_struct_data(const char *data) {
+void set_struct_data(char *data) {
     extern Config config;
+
+    const char *SERVER_PORT_PATH = "server.port";
     
+    char *delim = "=";
+    char *token;
+
+    token = strtok(data, delim);
+   
+    while(token != NULL) {
+        char *trimToken = trimwhitespace(token);
+
+        if (strcmp(SERVER_PORT_PATH, trimToken) == 0) {
+            token = strtok(NULL, delim);
+
+            int port = atoi(token);
+
+            if (port > 0) config.server.port = port;
+        }
     
+        token = strtok(NULL, delim);
+    }
+
+    printf("%d", config.server.port);
 }
 
 /** 
