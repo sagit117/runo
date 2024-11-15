@@ -3,7 +3,7 @@
 #include "../headers/common.h"
 #include "../headers/utils.h"
 
-#include <stdio.h>  // FILE
+#include <stdio.h>  // FILE fgets
 #include <string.h> // strlen strcmp strtok
 #include <stdlib.h> // atoi
 
@@ -20,6 +20,7 @@ void set_struct_data(char *data) {
     while(token != NULL) {
         char *trimToken = trimwhitespace(token);
 
+        // Server port
         if (strcmp(SERVER_PORT_PATH, trimToken) == 0) {
             token = strtok(NULL, delim);
 
@@ -36,7 +37,6 @@ void set_struct_data(char *data) {
 
 /** 
  * Заполняет config из файла.
- * @return 0 - ошибка, 1 - выполнено.
  */
 BOOL load_config_from_file(const char *filePath, Config *config) {
     FILE* fileConfig = fopen(filePath, "r");

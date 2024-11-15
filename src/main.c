@@ -6,9 +6,10 @@
 #include <stdlib.h> // exit
 
 /**
- * Объекты(тип) - с заглавной буквы.
- * Имена функций - snake_case.
- * Имена переменных - camelCase.
+ * Объекты(тип) -       PascalCase.
+ * Имена функций -      snake_case.
+ * Имена переменных -   camelCase.
+ * const -              UPPER_CASE
  */
 
 Logger logger = { .level = ALL };

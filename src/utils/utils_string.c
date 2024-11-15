@@ -1,4 +1,4 @@
-#include <ctype.h> // isspace
+#include <ctype.h>  // isspace
 #include <string.h> // strlen
 
 char *trimwhitespace(char *str) {
