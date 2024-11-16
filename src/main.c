@@ -1,9 +1,9 @@
 #include "headers/logger.h"
-#include "headers/params.h"
 #include "headers/config.h"
 #include "headers/common.h"
 
 #include <stdlib.h> // exit
+#include <unistd.h>
 
 /**
  * Объекты(тип) -       PascalCase.
@@ -16,10 +16,16 @@ Logger logger = { .level = ALL };
 Config config = { .server.port = 8080 };
 
 int main(int argc, char *argv[]) {
-    if (check_params_cmd(argc, argv) == FALSE) exit(EXIT_ERROR);
+    int res = 0;
+    extern char *optarg;
 
-    char *filePath = get_params_cmd_by_name(PARAM_CMD_CONFIG, argc, argv);
-    if (load_config_from_file(filePath, &config) == FALSE) exit(EXIT_ERROR);
+    while ((res = getopt(argc, argv, "hc:")) != -1) {
+		switch (res) {
+            case 'h': log_info("\nПараметры приложения: \n\t-c: параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg"); exit(EXIT_SUCCESS); break;
+            case 'c': if (load_config_from_file(optarg, &config) == FALSE) exit(EXIT_ERROR); break;
+            case '?': break;
+		} 
+	}
 
     return 0;
 }

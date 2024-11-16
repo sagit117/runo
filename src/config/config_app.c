@@ -38,7 +38,7 @@ BOOL load_config_from_file(const char *filePath, Config *config) {
     FILE* fileConfig = fopen(filePath, "r");
 
     if (fileConfig == NULL) {
-        log_error("Не могу открыть файл %s", filePath);
+        log_error("Не могу открыть файл конфигурации %s", filePath);
 
         return FALSE;
     }
@@ -46,7 +46,7 @@ BOOL load_config_from_file(const char *filePath, Config *config) {
     int bufferLength = 255;
     char buffer[bufferLength];
     
-    while(fgets(buffer, bufferLength, fileConfig)) {
+    while (fgets(buffer, bufferLength, fileConfig)) {
         set_struct_data(buffer);
     }
 

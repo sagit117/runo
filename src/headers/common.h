@@ -8,7 +8,4 @@
 #define EXIT_SUCCESS        0
 #define EXIT_ERROR          1
 
-#define PARAM_CMD_CONFIG    "-c"
-#define PARAM_CMD_HELP      "-h"
-
 #endif

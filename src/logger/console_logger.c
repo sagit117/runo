@@ -3,13 +3,14 @@
 #include <stdio.h>  // printf
 #include <time.h>   // time_t
 #include <stdarg.h> // va
+#include <string.h> 
 
 static char *level_str(int level) {
     switch (level) {
-        case DEBUG:     return "DEBUG";
-        case INFO:      return "INFO";
-        case WARNING:   return "WARNING";
-        case ERROR:     return "ERROR";
+        case DEBUG:     return PRINT_MAGENTA "DEBUG" PRINT_RST;
+        case INFO:      return PRINT_BLUE "INFO" PRINT_RST;
+        case WARNING:   return PRINT_YELLOW "WARNING" PRINT_RST;
+        case ERROR:     return PRINT_RED "ERROR" PRINT_RST;
 
         default: return "UNKNOWN";
     };
@@ -35,7 +36,7 @@ void log_format(const int level, const char *message, va_list *vl) {
 
 void log_error(const char *message, ...) {
     va_list vl;   
-    va_start(vl, message); 
+    va_start(vl, message);
 
     log_format(ERROR, message, &vl);
 
