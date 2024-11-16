@@ -3,7 +3,7 @@
 #include "headers/common.h"
 
 #include <stdlib.h> // exit
-#include <unistd.h>
+#include <unistd.h> // getopt
 
 /**
  * Объекты(тип) -       PascalCase.
@@ -18,7 +18,9 @@ Config config = { .server.port = 8080 };
 int main(int argc, char *argv[]) {
     int res = 0;
     extern char *optarg;
-
+    extern int opterr;
+    opterr = 0; // отключить ошибки в getopt
+    
     while ((res = getopt(argc, argv, "hc:")) != -1) {
 		switch (res) {
             case 'h': log_info("\nПараметры приложения: \n\t-c: параметр конфигурации и путь до файла конфигурации, пример: -c ./cfg"); exit(EXIT_SUCCESS); break;
