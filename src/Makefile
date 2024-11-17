@@ -1,7 +1,7 @@
 CC = gcc
 TARGET = runo
 HEADERS = ./headers/*.h
-OBJECTS = logger.o config.o utils.o
+OBJECTS = logger.o config.o utils.o server.o
 
 all: $(TARGET)
 
@@ -13,6 +13,9 @@ config.o: ./config/config_app.c ./headers/config.h #./headers/common.h ./headers
 
 utils.o: ./utils/utils_string.c ./headers/utils.h
 	$(CC) -O0 -g3 -Wall -c ./utils/utils_string.c -o ../build/utils.o
+
+server.o: ./server/http/runo_http_server.c ./headers/server.h
+	$(CC) -O0 -g3 -Wall -c ./server/http/runo_http_server.c -o ../build/server.o
 
 main.o:	main.c $(HEADERS) $(OBJECTS)
 	$(CC) -O0 -g3 -Wall -c main.c -o ../build/main.o

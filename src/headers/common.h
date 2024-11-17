@@ -1,6 +1,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#define _POSIX_C_SOURCE 2
+
 #define BOOL                int
 #define FALSE               0
 #define TRUE                1

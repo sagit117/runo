@@ -3,6 +3,7 @@
 
 typedef struct {
     int port;
+    int max_connections;
 } Server;
 
 typedef struct {
